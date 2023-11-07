@@ -32,6 +32,8 @@ export const Form = styled.form`
     }
 
     > a {
+        text-align: center;
+        color: ${({ theme }) => theme.COLORS.PINK};
         margin-top: 2.5rem;
         justify-content: center;
     }
