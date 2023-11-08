@@ -39,7 +39,7 @@ export function Profile() {
         />
         <Input
           icon={FiMail}
-          placeholder="Nome"
+          placeholder="Email"
           type="text"
         />
 
