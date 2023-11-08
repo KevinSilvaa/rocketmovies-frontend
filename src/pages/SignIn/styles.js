@@ -32,8 +32,10 @@ export const Form = styled.form`
     }
 
     > a {
+        text-decoration: none;
+        text-align: center;
         margin-top: 2.5rem;
-        justify-content: center;
+        color: ${({ theme }) => theme.COLORS.PINK};
     }
 `;
 
