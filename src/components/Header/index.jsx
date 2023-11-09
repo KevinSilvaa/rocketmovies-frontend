@@ -1,11 +1,11 @@
-import { Container, Profile } from "./styles";
+import { Avatar, Container, Profile } from "./styles";
 import { Input } from "../Input";
 import { FiSearch } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
 export function Header() {
 
-  const { user } = useAuth();
+  const { signOut } = useAuth();
 
   return (
     <Container>
@@ -17,16 +17,17 @@ export function Header() {
         type="search"
       />
 
-      <Profile to="/profile">
+      <Profile>
         <div>
-          <strong>{user.name}</strong>
-          <span>Sair</span>
+          <strong>Kevin</strong>
+          <button onClick={signOut}>Sair</button>
         </div>
-
-        <img
-          src="https://github.com/KevinSilvaa.png"
-          alt={`${user.name} avatar`}
-        />
+        <Avatar to="/profile">
+          <img
+            src="https://github.com/KevinSilvaa.png"
+            alt= "Kevin photo"
+          />
+        </Avatar>
       </Profile>
     </Container>
   );

@@ -18,15 +18,9 @@ export const Container = styled.header`
     }
 `;
 
-export const Profile = styled(Link)`
+export const Profile = styled.div`
     display: flex;
     gap: 1rem;
-
-    > img {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-    }
 
     > div {
         display: flex;
@@ -42,10 +36,22 @@ export const Profile = styled(Link)`
             color: ${({ theme }) => theme.COLORS.WHITE}
         }
 
-        span {
+        button {
+            border: none;
+            outline: none;
+            background: transparent;
             font-size: 0.875rem;
+            font-weight: 500;
             color: ${({ theme }) => theme.COLORS.GRAY_300};
             align-self: right;
         }
+    }
+`;
+
+export const Avatar = styled(Link)`
+    img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
     }
 `;
