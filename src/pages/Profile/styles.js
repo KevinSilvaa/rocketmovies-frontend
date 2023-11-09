@@ -6,6 +6,13 @@ export const Container = styled.div`
     > header {
         padding: 4rem 9rem;
         background: ${({ theme }) => theme.COLORS.BACKGROUND_500};
+
+        a {
+            display: flex;
+            align-items: center;
+            color: ${({ theme }) => theme.COLORS.PINK};
+            gap: 0.5rem;
+        }
     }
 `;
 
