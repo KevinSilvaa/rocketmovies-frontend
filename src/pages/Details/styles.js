@@ -38,6 +38,7 @@ export const Infos = styled.div`
             max-width: 10vw;
             background: ${({ theme }) => theme.COLORS.BLACK};
             color: ${({ theme }) => theme.COLORS.PINK};
+            margin: 0;
                 
             svg {
                 color: ${({ theme }) => theme.COLORS.WHITE};

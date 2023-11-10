@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Infos, PostInfos, Resume } from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { FiArrowLeft, FiClock, FiXCircle } from "react-icons/fi";
 
@@ -19,7 +19,19 @@ export function Details() {
   const { user } = useAuth();
   const params = useParams();
 
+  const navigate = useNavigate();
+
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : userNullAvatar;
+
+  async function handleRemove() {
+    const confirm = window.confirm("Tem certeza que deseja remover este filme da lista?");
+
+    if (confirm) {
+      await api.delete(`/notes/${params.id}`);
+      navigate("/");
+    }
+    
+  }
 
   useEffect(() => {
     async function fetchNotes() {
@@ -42,9 +54,11 @@ export function Details() {
               <FiArrowLeft />
               Voltar
             </Link>
+            
             <Button
               icon={FiXCircle}
               title="Excluir filme"
+              onClick={handleRemove}
             />
           </div>
 
