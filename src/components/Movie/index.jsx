@@ -8,11 +8,9 @@ export function Movie({ data, ...rest }) {
     <Container {...rest}>
       <h1>{data.title}</h1>
 
-      <Rating 
-        rate={data.rating}
-      />
+      <Rating rate={data.rating} />
 
-      <p>{data.description}</p>
+      <p>{data.description ? data.description : "Nenhuma descrição sobre o filme foi informada"}</p>
       {
         data.tags &&
         <footer>

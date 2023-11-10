@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
-import { Container, Content, AddMovie } from "./styles";
-import { Header } from "../../components/Header";
-import { Movie } from "../../components/Movie";
 import { FiPlus, FiSearch } from "react-icons/fi";
-import { Input } from "../../components/Input";
+
 import { api } from "../../services/api";
-import { Link } from "react-router-dom";
+
+import { Container, Content, AddMovie } from "./styles";
+
+import { Movie } from "../../components/Movie";
+import { Input } from "../../components/Input";
+import { Header } from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const [search, setSearch] = useState("");
   const [movieNotes, setMovieNotes] = useState([]);
 
+  const navigate = useNavigate();
+
+  function handleDetails(id) {
+    navigate(`/details/${id}`);
+  }
+  
   useEffect(() => {
     async function fetchMovieNotes() {
       const response = await api.get(`/notes?title=${search}`);
       setMovieNotes(response.data);
+      console.log(response.data);
     }
 
     fetchMovieNotes();
@@ -46,6 +56,7 @@ export function Home() {
               <Movie 
                 key={String(movieNote.id)}
                 data={movieNote}
+                onClick={() => handleDetails(movieNote.id)}
               />
             ))
           }

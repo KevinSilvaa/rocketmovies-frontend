@@ -4,17 +4,17 @@ import { VscStarEmpty, VscStarFull } from "react-icons/vsc";
 export function Rating({ rate }) {
   let stars = [];
 
-  for (let contador = 1; contador <= 6; contador++) {
-    if (contador <= rate) {
-      stars.push(<VscStarFull key={contador} />);
+  for (let cont = 1; cont <= 6; cont++) {
+    if (cont <= rate) {
+      stars.push(<VscStarFull key={String(cont)} />);
     } else {
-      stars.push(<VscStarEmpty key={contador} />)
+      stars.push(<VscStarEmpty key={String(cont)} />);
     }
   }
 
-  return (
-    <Container data={rate}>
+  return(
+    <Container>
       {stars}
     </Container>
-  );
+  )
 }

@@ -8,37 +8,30 @@ export const Container = styled.section`
         height: 80vh;
         overflow-y: auto;
 
-        div:nth-child(2) {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-
-            h2 {
-                font-size: 2.25rem;
-                font-weight: 500;
-                color: ${({ theme }) => theme.COLORS.WHITE};
-            }
-
-            svg {
-                font-size: 1.25rem;
-                color: ${({ theme }) => theme.COLORS.PINK};
-                fill: ${({ theme }) => theme.COLORS.PINK};
-
-                &:last-child {
-                    fill: none;
-                }
-            }
+        > div h2 {
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: ${({ theme }) => theme.COLORS.WHITE};
         }
-
     }
 `;
+
 
 export const Infos = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 368px;
     gap: 1.5rem;
+
+    .title-rating {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+    svg:last-child {
+        display: none;
+    }
 
     > a {
         display: flex;
