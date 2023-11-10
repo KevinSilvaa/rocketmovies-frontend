@@ -6,6 +6,7 @@ import { Textarea } from "../../components/Textarea";
 import { MovieItem } from "../../components/MovieItem";
 import { Section } from "../../components/Section";
 import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 
@@ -22,6 +23,10 @@ export function NewMovie() {
   const [newTag, setNewTag] = useState("");
 
   const navigate = useNavigate();
+  
+  function handleBack() {
+    navigate(-1);
+  }
 
   function handleAddTag() {
     if (tags.length >= 5) {
@@ -58,7 +63,7 @@ export function NewMovie() {
     });
 
     alert("Filme adicionado com sucesso");
-    navigate("/");
+    navigate(-1);
   }
 
   return (
@@ -66,10 +71,11 @@ export function NewMovie() {
       <Header />
 
       <main>
-        <Link to="/">
-          <FiArrowLeft />
-          Voltar
-        </Link>
+        <ButtonText
+          icon={FiArrowLeft}
+          title="Voltar"
+          onClick={handleBack}
+        />
 
         <Section title="Novo filme">
           <Form>
@@ -117,7 +123,9 @@ export function NewMovie() {
             <Button
               icon={FiXCircle}
               title="Excluir filme"
+              onClick={handleBack}
             />
+
             <Button
               icon={FiCheck}
               title="Salvar alterações"

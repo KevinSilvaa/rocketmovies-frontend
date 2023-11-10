@@ -6,11 +6,13 @@ import { FiArrowLeft, FiClock, FiXCircle } from "react-icons/fi";
 
 import { api } from "../../services/api";
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+
 import { Header } from "../../components/Header";
 import { Rating } from "../../components/Rating";
 import { Tag } from "../../components/Tag";
 import { Button } from "../../components/Button"
-import { Link } from "react-router-dom";
+import { ButtonText } from "../../components/ButtonText";
 import { useAuth } from "../../hooks/auth";
 
 export function Details() {
@@ -19,16 +21,20 @@ export function Details() {
   const { user } = useAuth();
   const params = useParams();
 
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+  
   const navigate = useNavigate();
 
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : userNullAvatar;
+  function handleBack() {
+    navigate(-1);
+  }
 
   async function handleRemove() {
     const confirm = window.confirm("Tem certeza que deseja remover este filme da lista?");
 
     if (confirm) {
       await api.delete(`/notes/${params.id}`);
-      navigate("/");
+      navigate(-1);
     }
     
   }
@@ -50,10 +56,11 @@ export function Details() {
       <main>
         <Infos>
           <div className="buttons">
-            <Link to="/">
-              <FiArrowLeft />
-              Voltar
-            </Link>
+            <ButtonText
+              icon={FiArrowLeft}
+              title="Voltar"
+              onClick={handleBack}
+            />
             
             <Button
               icon={FiXCircle}
