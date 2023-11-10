@@ -38,6 +38,18 @@ export function NewMovie() {
   }
 
   async function handleNewMovie() {
+    if (!title) {
+      return alert("Digite o título do filme");
+    }  
+    
+    if (!rating) {
+      return alert("Digite a nota do filme");
+    }
+    
+    if (newTag) {
+      return alert("Você deixou uma tag sem adicionar no campo, clique para adicioná-la ou deixe o campo vazio");
+    }
+
     await api.post("/notes", {
       title,
       rating,
