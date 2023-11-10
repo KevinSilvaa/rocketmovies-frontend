@@ -52,7 +52,7 @@ export function NewMovie() {
     }
     
     if (newTag) {
-      return alert("Você deixou uma tag sem adicionar no campo, clique para adicioná-la ou deixe o campo vazio");
+      return alert("Você deixou uma tag no campo para adicionar, clique para adicioná-la ou deixe o campo vazio");
     }
 
     await api.post("/notes", {
