@@ -23,21 +23,36 @@ export const Infos = styled.div`
     justify-content: center;
     gap: 1.5rem;
 
-    .title-rating {
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+
+        a {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.5rem;
+            color: ${({ theme }) => theme.COLORS.PINK};
         }
 
-    svg:last-child {
-        display: none;
+        button {
+            max-width: 10vw;
+            background: ${({ theme }) => theme.COLORS.BLACK};
+            color: ${({ theme }) => theme.COLORS.PINK};
+                
+            svg {
+                color: ${({ theme }) => theme.COLORS.WHITE};
+            }
+        }
     }
 
-    > a {
+    .title-rating {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        color: ${({ theme }) => theme.COLORS.PINK};
+        gap: 1.5rem;
+        
+        svg:last-child {
+            display: none;
+        }
     }
 `;
 

@@ -125,8 +125,6 @@ export function NewMovie() {
             />
           </div>
         </Section>
-
-
       </main>
     </Container>
   );

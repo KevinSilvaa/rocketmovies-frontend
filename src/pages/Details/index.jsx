@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { Container, Infos, PostInfos, Resume } from "./styles";
 import { useParams } from "react-router-dom";
 
-import { FiArrowLeft, FiClock } from "react-icons/fi";
+import { FiArrowLeft, FiClock, FiXCircle } from "react-icons/fi";
 
 import { api } from "../../services/api";
 
 import { Header } from "../../components/Header";
 import { Rating } from "../../components/Rating";
 import { Tag } from "../../components/Tag";
+import { Button } from "../../components/Button"
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
@@ -36,10 +37,16 @@ export function Details() {
 
       <main>
         <Infos>
-          <Link to="/">
-            <FiArrowLeft />
-            Voltar
-          </Link>
+          <div className="buttons">
+            <Link to="/">
+              <FiArrowLeft />
+              Voltar
+            </Link>
+            <Button
+              icon={FiXCircle}
+              title="Excluir filme"
+            />
+          </div>
 
           <div className="title-rating">
             <h2>{data.title}</h2>
@@ -61,13 +68,13 @@ export function Details() {
         {
           data.tags &&
           data.tags.map(tag => (
-            <Tag 
+            <Tag
               key={String(tag.id)}
-              title={tag.name}   
+              title={tag.name}
             />
           ))
         }
-        
+
         <Resume>
           <p>
             {data.description}
