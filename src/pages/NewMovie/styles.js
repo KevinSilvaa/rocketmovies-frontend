@@ -8,6 +8,13 @@ export const Container = styled.div`
         padding: 2.5rem 7rem 0;
         overflow-y: auto;
         
+        a {
+            color: ${({ theme }) => theme.COLORS.PINK};
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .tags {
             width: 100%;
             background: ${({ theme }) => theme.COLORS.BLACK};
