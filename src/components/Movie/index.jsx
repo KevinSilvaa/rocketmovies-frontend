@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 import { Tag } from "../Tag";
-import { FiStar } from "react-icons/fi"
+import { Rating } from "../Rating"
 
 export function Movie({ data, ...rest }) {
 
@@ -8,15 +8,11 @@ export function Movie({ data, ...rest }) {
     <Container {...rest}>
       <h1>{data.title}</h1>
 
-      <div>
-        <FiStar />
-        <FiStar />
-        <FiStar />
-        <FiStar />
-        <FiStar />
-      </div>
+      <Rating 
+        rate={data.rating}
+      />
 
-      <p>{data.resume}</p>
+      <p>{data.description}</p>
       {
         data.tags &&
         <footer>
