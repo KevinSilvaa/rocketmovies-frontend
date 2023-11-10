@@ -24,7 +24,6 @@ export function Home() {
     async function fetchMovieNotes() {
       const response = await api.get(`/notes?title=${search}`);
       setMovieNotes(response.data);
-      console.log(response.data);
     }
 
     fetchMovieNotes();
