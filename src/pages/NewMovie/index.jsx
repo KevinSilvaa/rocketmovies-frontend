@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiArrowLeft, FiCheck, FiXCircle } from "react-icons/fi";
 
 import { Textarea } from "../../components/Textarea";
@@ -9,12 +9,19 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 
+import { api } from "../../services/api";
+
 import { Container, Form } from "./styles";
 
 export function NewMovie() {
+  const [title, setTitle] = useState("");
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
+
+  const navigate = useNavigate();
 
   function handleAddTag() {
     if (tags.length >= 5) {
@@ -28,6 +35,18 @@ export function NewMovie() {
 
   function handleRemoveTag(deleted) {
     setTags(prevState => prevState.filter(tag => tag !== deleted));
+  }
+
+  async function handleNewMovie() {
+    await api.post("/notes", {
+      title,
+      rating,
+      description,
+      tags
+    });
+
+    alert("Filme adicionado com sucesso");
+    navigate("/");
   }
 
   return (
@@ -45,14 +64,17 @@ export function NewMovie() {
             <Input
               placeholder="Título"
               type="text"
+              onChange={e => setTitle(e.target.value)}
             />
             <Input
               placeholder="Digite sua nota (de 0 a 5)"
-              type="number"
+              type="text"
+              onChange={e => setRating(e.target.value)}
             />
 
             <Textarea
               placeholder="Observações"
+              onChange={e => setDescription(e.target.value)}
             />
 
           </Form>
@@ -87,6 +109,7 @@ export function NewMovie() {
             <Button
               icon={FiCheck}
               title="Salvar alterações"
+              onClick={handleNewMovie}
             />
           </div>
         </Section>
