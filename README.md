@@ -22,10 +22,6 @@ Após criar a sua conta você também poderá alterar suas informações dentro 
 
   - `Vite` 
 
-- `Node.js`
-
-  - `Express`
-
 - `API RESTful`
 
 
