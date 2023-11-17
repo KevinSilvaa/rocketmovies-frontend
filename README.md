@@ -61,7 +61,7 @@ Para que o projeto funcione, certifique-se de ter instalado corretamente o Node.
   $ npm run dev
   ```
 
-## Veja o [Back-end](https://github.com/KevinSilvaa/rocketmovies-backend) deste projeto
+# Veja o [Back-end](https://github.com/KevinSilvaa/rocketmovies-backend) deste projeto
 
 ## Desenvolvido por:
 
